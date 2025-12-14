@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <title>Personal Portofolio</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo" data-aos="zoom-in" data-aos-duration="1000" data-aos-delay="100">
+            Ahmad<span>Humam</span>
+        </div>
+        <div class="links">
+            <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100"><a href="#">Home</a></div>
+            <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200"><a href="#">About</a></div>
+            <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300"><a href="#">Skills</a></div>
+            <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400"><a href="#">Services</a></div>
+            <div class="link" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500"><a href="#">Contact</a></div>
+        </div>
+        <i class="fa-solid fa-bars hamburg" onclick="hamburg()"></i>
+        </div>
+        <div class="dropdown">
+        <div class="links">
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Skills</a>
+            <a href="#">Services</a>
+            <a href="#">Contact</a>
+            <i class="fa-solid fa-xmark cancel" onclick="cancel()"></i>
+        </div>
+        </div>
+    </nav>
+    <section>
+        <div class="main-container">
+            <div class="image" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="100">
+                <img src="main.jpg" >
+            </div>
+            <div class="content">
+                <h1 data-aos="fade-right" data-aos-duration="1500" data-aos-delay="100">Hey I'm Ahmad <span>Humam</span></h1>
+                <div class="typewritter" data-aos="zoom-in" data-aos-duration="1500" data-aos-delay="100">I'm a <span class="typewritter-text"></span><label for="">|</label></div>
+                <p data-aos="flip-up" data-aos-duration="1500" data-aos-delay="100">Hi there! I'm a passionate Full-Stack Website Developer with a knack for crafting beautiful, functional, and user-friendly digital experiences. With a strong foundation in HTML5, CSS3, JavaScript, and frameworks like React and Node.js, I bring ideas to life across both front-end and back-end environments.</p>
+            <div class="social-links">
+                <a href="#"><i class="fa-brands fa-github" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="100"></i></a>
+                <a href="#"><i class="fa-brands fa-linkedin" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200"></i></a>
+                <a href="#"><i class="fa-brands fa-youtube" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="300"></i></a>
+                <a href="#"><i class="fa-brands fa-instagram" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="400"></i></a>
+            </div>
+            <div class="btn">
+                <button data-aos="fade-left" data-aos-duration="1000" data-aos-delay="100">Hire Me</button>
+            </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        function hamburg(){
+            navbar = document.querySelector(".dropdown")
+            navbar.style.transform = "translateY(0px)"
+        }
+
+        function cancel(){
+            navbar = document.querySelector(".dropdown")
+            navbar.style.transform = "translateY(-500px)"
+        }
+
+        // Typewritter effect //
+
+        const texts = [
+            "WEB DEVELOPER",
+            "DESIGNER",
+            "YOUTUBER"
+    ]
+    let speed = 100;
+    const textElements = document.querySelector(".typewritter-text")
+
+    let textIndex = 0;
+    let characterIndex = 0;
+
+    function typeWritter(){
+        if (characterIndex < texts[textIndex].length){
+            textElements.innerHTML += texts[textIndex].charAt(characterIndex);
+            characterIndex++;
+            setTimeout(typeWritter, speed);
+        }
+        else {
+            setTimeout(eraseText, 1000)
+        }
+    }
+
+    function eraseText(){
+        if (textElements.innerHTML.length > 0){
+            textElements.innerHTML = textElements.innerHTML.slice(0,-1);
+            setTimeout(eraseText, 50)
+        }
+        else {
+            textIndex = (textIndex + 1) % texts.length;
+            characterIndex = 0;
+            setTimeout(typeWritter, 500)
+        }
+    }
+
+    window.onload = typeWritter
+
+    </script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>
